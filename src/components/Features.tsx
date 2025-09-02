@@ -1,54 +1,78 @@
+// src/components/Features.tsx
 import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
-const FeaturesSection: React.FC = () => {
+const featureData = [
+  {
+    label: 'FITUR 1',
+    imageSrc: '/background_batik.png',
+    alt: 'Contoh Motif Batik 1',
+    href: '/KenalBatik', 
+  },
+  {
+    label: 'FITUR 2',
+    imageSrc: '/background_batik.png',
+    alt: 'Contoh Motif Batik 2',
+    href: '/BatikPedia',
+  },
+  {
+    label: 'FITUR 3',
+    imageSrc: '/background_batik.png',
+    alt: 'Contoh Motif Batik 3',
+    href: '/StudioKreasi',
+  },
+  {
+    label: 'FITUR 4',
+    imageSrc: '/background_batik.png',
+    alt: 'Contoh Motif Batik 4',
+    href: '/BatikFit',
+  },
+];
+
+const Features = () => {
   return (
-    <section className="bg-white py-16 md:py-24">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">Fitur-fitur Batiklens</h2>
-        <div className="relative bg-orange-200 p-8 md:p-12 rounded-3xl shadow-xl -mt-20 md:-mt-24 mx-auto max-w-5xl">
-          <div className="flex flex-col md:flex-row justify-around items-center space-y-6 md:space-y-0 md:space-x-8">
-            <div className="bg-white text-orange-600 px-8 py-5 rounded-full shadow-lg font-semibold text-lg md:text-xl text-center min-w-[200px]">
-              FITUR 1
-            </div>
-            <div className="bg-white text-orange-600 px-8 py-5 rounded-full shadow-lg font-semibold text-lg md:text-xl text-center min-w-[200px]">
-              FITUR 2
-            </div>
-            <div className="bg-white text-orange-600 px-8 py-5 rounded-full shadow-lg font-semibold text-lg md:text-xl text-center min-w-[200px]">
-              FITUR 3
+    <section id="fitur" className="py-20 bg-white">
+      <div className="container mx-auto px-6 text-center">
+        
+        <div className="relative bg-gradient-to-b from-orange-400 to-orange-600 rounded-3xl lg:rounded-[50px] px-6 pt-10 pb-32 shadow-xl">
+          
+          <h2 className="text-4xl font-serif text-white mb-8 md:mb-12">
+            Fitur-fitur KenalBatik
+          </h2>
+
+          <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-full max-w-4xl px-4">
+            {/* --- PERUBAHAN ADA DI BARIS DI BAWAH INI --- */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              
+              {featureData.map((feature) => (
+                <Link href={feature.href} key={feature.label}>
+                  <div className="bg-orange-400 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
+                    <div className="relative w-full h-48 sm:h-56 md:h-64">
+                      <Image
+                        src={feature.imageSrc}
+                        alt={feature.alt}
+                        layout="fill"
+                        objectFit="cover"
+                        className="rounded-t-2xl"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <p className="font-semibold text-white text-lg">
+                        {feature.label}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16 md:mt-24">
-          {/* Fitur 1 */}
-          <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8">
-            <div className="w-full md:w-1/2 bg-orange-300 rounded-2xl h-64 md:h-80 shadow-md flex-shrink-0">
-              {/* Gambar atau ilustrasi terkait fitur 1 */}
-            </div>
-            <div className="w-full md:w-1/2">
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Judul Deskripsi Fitur 1</h3>
-              <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec sapien nulla sit amet iaculis pulvinar.
-              </p>
-            </div>
-          </div>
-
-          {/* Fitur 2 */}
-          <div className="flex flex-col-reverse md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8 mt-12 md:mt-0">
-            <div className="w-full md:w-1/2">
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Judul Deskripsi Fitur 2</h3>
-              <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec sapien nulla sit amet iaculis pulvinar.
-              </p>
-            </div>
-            <div className="w-full md:w-1/2 bg-orange-300 rounded-2xl h-64 md:h-80 shadow-md flex-shrink-0">
-              {/* Gambar atau ilustrasi terkait fitur 2 */}
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
 };
 
-export default FeaturesSection;
+export default Features;
