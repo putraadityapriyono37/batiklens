@@ -214,7 +214,7 @@ const UploadSection = () => {
                         </h2>
                         <div className="mt-4 space-y-2 text-gray-600 text-base flex-grow">
                             <p><span className="font-semibold">Asal:</span> {analysisResult ? analysisResult.origin : statusMessage}</p>
-                            <p className="line-clamp-6"><span className="font-semibold">Filosofi:</span> {analysisResult ? analysisResult.philosophy : "-"}</p>
+                            <p className="max-h-[200px] overflow-y-auto pr-2"><span className="font-semibold">Filosofi:</span> {analysisResult ? analysisResult.philosophy : "-"}</p>
                         </div>
                         
                         <div className="mt-auto pt-8 flex items-center gap-4">
