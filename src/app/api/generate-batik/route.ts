@@ -1,48 +1,76 @@
 // src/app/api/generate-batik/route.ts
+import { NextResponse } from "next/server";
+import * as fal from "@fal-ai/serverless-client";
+import { fetch } from "undici";
 
-import { NextResponse } from 'next/server';
+// Polyfill untuk fetch di lingkungan Node.js
+if (!global.fetch) {
+  global.fetch = fetch as any;
+}
+
+fal.config({
+  credentials: process.env.FAL_AI_KEY!,
+});
+
+// ❌ JANGAN pakai runtime edge kalau butuh Buffer
+// export const config = { runtime: "edge" };
 
 export async function POST(request: Request) {
   try {
-    // Untuk saat ini kita terima FormData karena frontend akan mengirim gambar
     const formData = await request.formData();
-    const image = formData.get('image') as Blob; // Gambar awal (misal: Motif A)
-    const prompt = formData.get('prompt') as string; // Perintah teks (misal: "ubah dengan gaya Megamendung")
+    const imageFile = formData.get("image") as File | null;
+    const prompt = formData.get("prompt") as string | null;
 
-    if (!image || !prompt) {
-      return NextResponse.json({ error: 'Gambar dan prompt dibutuhkan' }, { status: 400 });
+    if (!imageFile || !prompt) {
+      return NextResponse.json(
+        { error: "Gambar dan prompt dibutuhkan" },
+        { status: 400 }
+      );
     }
 
-    // Panggil API Hugging Face / fal.ai dari sisi server
-    const response = await fetch(
-      "https://router.huggingface.co/fal-ai/fal-ai/flux-kontext/dev?_subdomain=queue", // URL Endpoint FLUX.1
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.HF_TOKEN}`, // Menggunakan token rahasia
-          "Content-Type": image.type,
-        },
-        method: "POST",
-        body: image, // Kirim gambar sebagai body request
-        // Catatan: Model FLUX.1 mungkin butuh input berbeda. Ini adalah contoh umum.
-        // Anda mungkin perlu menyesuaikan cara mengirim prompt, cek dokumentasi API-nya.
-      }
-    );
+    const imageBuffer = Buffer.from(await imageFile.arrayBuffer());
 
-    if (!response.ok) {
-        const errorText = await response.text();
-        console.error("Hugging Face API Error:", errorText);
-        return NextResponse.json({ error: `Hugging Face API error: ${errorText}` }, { status: response.status });
-    }
+    console.log("🚀 Memulai panggilan ke fal.ai...");
 
-    const resultImage = await response.blob();
-
-    // Kirim gambar hasil kembali ke frontend
-    return new Response(resultImage, {
-        headers: { 'Content-Type': resultImage.type }
+    const result: any = await fal.run("fal-ai/flux-pro/v1.1-ultra", {
+      input: {
+        prompt,
+        image: [
+          {
+            name: imageFile.name,
+            buffer: imageBuffer,
+          },
+        ],
+      },
     });
 
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    console.log("✅ Panggilan ke fal.ai berhasil:", JSON.stringify(result, null, 2));
+
+    const resultImageUrl = result.images?.[0]?.url;
+    if (!resultImageUrl) {
+      console.error("❌ Tidak ada URL gambar di response FAL.");
+      return NextResponse.json(
+        { error: "Tidak ada gambar dihasilkan" },
+        { status: 500 }
+      );
+    }
+
+    // Ambil gambar dari URL hasil
+    const imageResponse = await fetch(resultImageUrl);
+    const resultArrayBuffer = await imageResponse.arrayBuffer();
+    const resultBuffer = Buffer.from(resultArrayBuffer);
+
+    const contentType =
+      imageResponse.headers.get("content-type") || "image/png";
+
+    return new Response(resultBuffer, {
+      headers: { "Content-Type": contentType },
+    });
+  } catch (error: any) {
+    console.error("❌ Error di API Route:", error);
+    return NextResponse.json(
+      { error: error.message || "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }
