@@ -13,10 +13,12 @@
     "@gradio/client": "^1.17.1",
     "@supabase/supabase-js": "^2.56.1",
     "@tensorflow/tfjs": "^4.22.0",
+    "@types/uuid": "^10.0.0",
     "next": "15.5.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "undici": "^7.15.0"
+    "undici": "^7.15.0",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
