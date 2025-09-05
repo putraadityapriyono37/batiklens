@@ -32,7 +32,7 @@ export async function POST(request: Request) {
 
     console.log("🚀 Memulai panggilan ke fal.ai...");
 
-    const result: any = await fal.run("fal-ai/flux-pro/v1.1-ultra", {
+    const result: any = await fal.run('fal-ai/flux-kontext/dev', {
       input: {
         prompt,
         image: [
