@@ -61,7 +61,7 @@ const Navbar = () => {
           </button>
 
           {/* === PERUBAHAN UTAMA ADA DI SINI === */}
-          <Link href="/register" className="rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 px-6 py-2 font-semibold text-white transition-opacity hover:opacity-90">
+          <Link href="/login" className="rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 px-6 py-2 font-semibold text-white transition-opacity hover:opacity-90">
             Login
           </Link>
           
