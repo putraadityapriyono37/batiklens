@@ -1,20 +1,53 @@
 // src/app/StudioKreasi/page.tsx
-import React from 'react';
+"use client"; // Wajib karena kita menggunakan hooks
+
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabaseClient';
+import StudioKreasi from '@/components/StudioKreasi';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import StudioKreasi from '@/components/StudioKreasi'; // Import komponen intinya
 
 export default function StudioKreasiPage() {
-  return (
-    <main className="bg-[#F8F8F8]">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <Navbar />
-      </div>
+    const router = useRouter();
+    const [isLoading, setIsLoading] = useState(true);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-      {/* Cukup panggil komponen StudioKreasi di sini */}
-      <StudioKreasi />
+    useEffect(() => {
+        const checkUser = async () => {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (!user) {
+                // Jika tidak ada user yang login, arahkan ke halaman login
+                router.push('/login');
+            } else {
+                setIsAuthenticated(true);
+            }
+            setIsLoading(false);
+        };
 
-      <Footer />
-    </main>
-  );
+        checkUser();
+    }, [router]);
+
+    // Tampilkan layar loading saat sedang memeriksa status login
+    if (isLoading) {
+        return (
+            <div className="flex h-screen items-center justify-center bg-white">
+                <p className="text-lg font-semibold text-gray-700">Memeriksa Sesi Anda...</p>
+            </div>
+        );
+    }
+
+    // Hanya tampilkan halaman jika user sudah terautentikasi
+    if (isAuthenticated) {
+        return (
+            <main className="bg-white">
+                <Navbar />
+                <StudioKreasi />
+                <Footer />
+            </main>
+        );
+    }
+
+    // Tampilkan null atau fallback component jika redirect belum terjadi
+    return null;
 }
