@@ -17,7 +17,7 @@ const History = () => {
             transition={{ duration: 0.6 }}
           >
             {/* 2. Ubah warna teks kecil */}
-            <p className="text-stone-700 sm:text-2xl text-lg mb-6">
+            <p className="text-stone-500 sm:text-2xl text-lg mb-6">
               Proses Kreatif Anda
             </p>
           </motion.div>
@@ -28,7 +28,7 @@ const History = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             {/* 3. Ubah warna teks besar */}
-            <h2 className="text-black sm:text-4xl text-3xl font-medium lg:w-3/4 mx-auto">
+            <h2 className="text-white sm:text-4xl text-3xl font-medium lg:w-3/4 mx-auto">
               Dari inspirasi hingga karya nyata, kami memandu Anda melalui setiap langkah untuk mengenali dan menciptakan motif batik yang unik.
             </h2>
           </motion.div>

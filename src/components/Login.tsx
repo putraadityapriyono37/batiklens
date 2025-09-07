@@ -40,7 +40,7 @@ export default function LoginPage() {
                 <div className="w-full max-w-md">
                     <Link href="/">
                         <Image 
-                            src="/images/logo/logo_white_batiklens.svg" 
+                            src="/images/logo/logo_brown_batiklens.svg" 
                             alt="BatikLens Logo" 
                             width={400} 
                             height={200} 
