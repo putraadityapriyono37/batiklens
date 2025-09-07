@@ -19,7 +19,7 @@ export const headerData: MenuItem[] = [
       },
       {
         id: 22,
-        label: "Batik Fit", // Nama disesuaikan dari 'Batik Fit In'
+        label: "Batik Fit",
         href: "/BatikFit",
       },
       {
