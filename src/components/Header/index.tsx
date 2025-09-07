@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { headerData } from "./Navigation/menuData";
 import Logo from "./Logo";
 import HeaderLink from "./Navigation/HeaderLink";
@@ -13,9 +14,10 @@ const Header: React.FC = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const [user, setUser] = useState<User | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
-    // Cek session awal
+    // Ambil session awal
     const getSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       setUser(session?.user ?? null);
@@ -24,15 +26,33 @@ const Header: React.FC = () => {
 
     // Listener perubahan auth
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
+      (event, session) => {
+        console.log("Auth event:", event);
+
+        if (event === "PASSWORD_RECOVERY") {
+          // 🚀 Saat klik link reset password → arahkan ke halaman update
+          setUser(session?.user ?? null);
+          router.push("/update-password");
+          return;
+        }
+
+        if (event === "SIGNED_IN") {
+          // ✅ Cegah redirect ke home jika sedang di update-password
+          if (window.location.pathname !== "/update-password") {
+            router.push("/");
+          }
+        }
+
+        if (event === "SIGNED_OUT") {
+          router.push("/login");
+        }
+
         setUser(session?.user ?? null);
       }
     );
 
-    return () => {
-      subscription.unsubscribe();
-    };
-  }, []);
+    return () => subscription.unsubscribe();
+  }, [router]);
 
   useEffect(() => {
     const handleScroll = () => setSticky(window.scrollY >= 80);
@@ -42,8 +62,6 @@ const Header: React.FC = () => {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    // Opsional redirect:
-    // window.location.href = "/login";
   };
 
   const displayName =
@@ -55,7 +73,7 @@ const Header: React.FC = () => {
     <header
       className={`fixed top-0 z-40 w-full transition-all duration-300 ${
         sticky
-          ? "shadow-lg bg-[#D7AA83] text-black pt-5 pb-5"
+          ? "shadow-lg bg-[#D7AA83] text-black pt-5"
           : "shadow-none md:pt-14 pt-5"
       }`}
     >
@@ -87,7 +105,7 @@ const Header: React.FC = () => {
             ) : (
               <Link
                 href="/login"
-                className="hidden lg:block bg-transparent text-primary border hover:bg-gray-900 border-primary hover:text-darkmode px-4 py-2 rounded-lg transition-colors"
+                className="hidden lg:block bg-transparent text-primary border hover:bg-primary border-primary hover:text-darkmode px-4 py-2 rounded-lg transition-colors"
               >
                 Sign In
               </Link>
