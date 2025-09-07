@@ -4,6 +4,29 @@ module.exports = {
   theme: {
     extend: {
       // ... (konfigurasi Anda yang lain seperti fontFamily, dll.)
+      // tailwind.config.js
+
+      /** @type {import('tailwindcss').Config} */
+      module.exports = {
+        content: [
+          "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+          "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+          "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+        ],
+        theme: {
+          extend: {
+            fontFamily: {
+              // Ganti konfigurasi lama dengan ini
+              sans: ['var(--font-cutoff-pro)', 'sans-serif'],
+            },
+            colors: {
+              'batik-brown': '#D7AA83',
+            },
+            // ...konfigurasi lainnya
+          },
+        },
+        plugins: [],
+      }
 
       // --- TAMBAHKAN BAGIAN INI ---
       animation: {

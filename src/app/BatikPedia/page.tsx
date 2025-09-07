@@ -1,7 +1,7 @@
 // src/app/BatikPedia/page.tsx
 import { supabase } from "@/lib/supabaseClient";
 import BatikPedia from "@/components/BatikPedia"; // Impor komponen
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const revalidate = 0;

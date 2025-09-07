@@ -17,6 +17,9 @@ export default function ContactForm() {
     pesan: "",
   });
 
+  // ==========================================================
+  // SEMUA LOGIKA BACKEND DI BAWAH INI TIDAK DIUBAH SAMA SEKALI
+  // ==========================================================
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -54,49 +57,43 @@ export default function ContactForm() {
       setFormStatus("error");
     }
   };
+  // ==========================================================
+  // AKHIR DARI BAGIAN LOGIKA BACKEND
+  // ==========================================================
 
   return (
     <section
       id="kontak"
-      className="relative py-20 lg:py-24 bg-orange-500 overflow-hidden"
+      className="relative py-20 lg:py-32 bg-gray-900 overflow-hidden"
     >
-      {/* Background Pattern */}
-      <div
-        className="absolute inset-0 bg-repeat opacity-5"
-        style={{ backgroundImage: "url('/background_batik.png')" }}
-      ></div>
-
-      {/* Kontainer Utama */}
-      <div className="relative container mx-auto px-6 max-w-4xl">
-        <div className="text-left mb-12">
+      {/* Kontainer Utama yang sudah disamakan jaraknya */}
+      <div className="relative container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-serif text-white leading-tight">
-            Hubungi Kami
+            Hubungi <span className="text-[#D7AA83]">Kami</span>
           </h2>
-          <p className="mt-4 text-orange-100 max-w-xl">
+          <p className="mt-4 text-gray-300 max-w-xl mx-auto">
             Punya pertanyaan, saran, atau ingin berkolaborasi? Kami senang
             mendengar dari Anda.
           </p>
         </div>
 
         {/* Card Form */}
-        <div className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
+        <div className="max-w-2xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
           {formStatus === "success" ? (
             <div className="text-center py-10">
-              <h3 className="text-2xl font-serif text-green-700 font-bold">
+              <h3 className="text-2xl font-serif text-green-600 dark:text-green-500 font-bold">
                 Terima Kasih!
               </h3>
-              <p className="mt-2 text-gray-600">
+              <p className="mt-2 text-gray-600 dark:text-gray-300">
                 Pesan Anda telah berhasil terkirim.
               </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
                 <div>
-                  <label
-                    htmlFor="nama"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
+                  <label htmlFor="nama" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Nama
                   </label>
                   <input
@@ -104,7 +101,7 @@ export default function ContactForm() {
                     name="nama"
                     id="nama"
                     placeholder="Nama kamu"
-                    className="w-full p-3 bg-gray-50 text-gray-800 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                    className="w-full p-3 bg-gray-50 dark:bg-gray-700 text-black dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#D7AA83]"
                     value={formData.nama}
                     onChange={handleInputChange}
                     required
@@ -112,10 +109,7 @@ export default function ContactForm() {
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Email
                   </label>
                   <input
@@ -123,7 +117,7 @@ export default function ContactForm() {
                     name="email"
                     id="email"
                     placeholder="Email@gmail.com"
-                    className="w-full p-3 bg-gray-50 text-gray-800 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                    className="w-full p-3 bg-gray-50 dark:bg-gray-700 text-black dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#D7AA83]"
                     value={formData.email}
                     onChange={handleInputChange}
                     required
@@ -131,10 +125,7 @@ export default function ContactForm() {
                 </div>
 
                 <div className="md:col-span-2">
-                  <label
-                    htmlFor="pesan"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
+                  <label htmlFor="pesan" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Pesan
                   </label>
                   <textarea
@@ -142,7 +133,7 @@ export default function ContactForm() {
                     id="pesan"
                     rows={6}
                     placeholder="Pesan kamu"
-                    className="w-full p-3 bg-gray-50 text-gray-800 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                    className="w-full p-3 bg-gray-50 dark:bg-gray-700 text-black dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#D7AA83]"
                     value={formData.pesan}
                     onChange={handleInputChange}
                     required
@@ -151,7 +142,7 @@ export default function ContactForm() {
               </div>
 
               {formStatus === "error" && (
-                <p className="mt-4 text-sm text-red-600">
+                <p className="mt-4 text-sm text-red-600 dark:text-red-500">
                   Gagal mengirim pesan. Silakan coba lagi.
                 </p>
               )}
@@ -160,7 +151,7 @@ export default function ContactForm() {
                 <button
                   type="submit"
                   disabled={formStatus === "sending"}
-                  className="bg-orange-500 text-white font-bold px-10 py-3 rounded-lg hover:bg-orange-600 transition-colors duration-300 disabled:opacity-50 disabled:cursor-wait"
+                  className="bg-[#D7AA83] text-stone-800 font-bold px-10 py-3 rounded-lg hover:bg-[#c99c75] transition-colors duration-300 disabled:opacity-50 disabled:cursor-wait"
                 >
                   {formStatus === "sending" ? "Mengirim..." : "KIRIM"}
                 </button>
