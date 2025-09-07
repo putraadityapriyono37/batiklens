@@ -2,15 +2,23 @@
 
 import { MenuItem } from "@/types/menu";
 
+// Pastikan tipe MenuItem di src/types/menu.ts adalah:
+// export type MenuItem = {
+//   id: number;
+//   label: string;
+//   href?: string;
+//   submenu?: MenuItem[];
+// };
+
 export const headerData: MenuItem[] = [
   {
     id: 1,
-    label: "Home",
-    href: "/",
+    label: "Home", // Menggunakan 'label' bukan 'title'
+    href: "/",     // Menggunakan 'href' bukan 'path'
   },
   {
     id: 2,
-    label: "Fitur",
+    label: "Fitur", // Menggunakan 'label'
     submenu: [
       {
         id: 21,
@@ -36,7 +44,7 @@ export const headerData: MenuItem[] = [
   },
   {
     id: 3,
-    label: "Galeri",
-    href: "/#galeri", // Pastikan ada section dengan id="galeri" di homepage
+    label: "Galeri",  // Menggunakan 'label'
+    href: "/#galeri", // Menggunakan 'href'
   },
 ];
