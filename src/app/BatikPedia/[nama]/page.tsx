@@ -2,7 +2,7 @@
 import { supabase } from "@/lib/supabaseClient";
 import { notFound } from "next/navigation";
 import BatikDetail from "@/components/BatikDetail";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const revalidate = 0;

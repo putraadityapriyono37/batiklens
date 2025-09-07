@@ -94,7 +94,7 @@ export default function RegisterPage() {
                     <form onSubmit={handleSubmit} noValidate>
                         <div className="mb-6">
                             <button type="button" onClick={handleGoogleLogin} disabled={loading} className="w-full flex items-center justify-center py-3 px-4 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors shadow-sm disabled:opacity-50">
-                                <Image src="/google-logo.svg" alt="Google" width={20} height={20} className="mr-3"/>
+                                <Image src="/images/logo/google_logo.png" alt="Google" width={20} height={20} className="mr-3"/>
                                 Continue with Google
                             </button>
                         </div>

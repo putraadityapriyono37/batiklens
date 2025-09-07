@@ -5,12 +5,10 @@ import React from 'react';
 import Image from 'next/image';
 
 const galleryItems = [
-  { id: 1, src: '/batik-gallery-1.jpg', name: 'Batik Megamendung' },
-  { id: 2, src: '/batik-gallery-2.jpg', name: 'Batik Parang' },
-  { id: 3, src: '/batik-gallery-3.jpg', name: 'Batik Kawung' },
-  { id: 4, src: '/batik-gallery-4.jpg', name: 'Batik Sidomukti' },
-  { id: 5, src: '/batik-gallery-5.jpg', name: 'Batik Truntum' },
-  { id: 6, src: '/batik-gallery-6.jpg', name: 'Batik Sekar Jagad' },
+  { id: 1, src: '/images/gallery/mega_mendung.jpg', name: 'Batik Megamendung' },
+  { id: 2, src: '/images/gallery/parang.jpg', name: 'Batik Parang' },
+  { id: 3, src: '/images/gallery/kawung.jpg', name: 'Batik Kawung' },
+  { id: 4, src: '/images/gallery/cendrawasih.jpg', name: 'Batik Cendrawasih' },
 ];
 
 const Gallery = () => {

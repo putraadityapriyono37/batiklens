@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import StudioKreasi from '@/components/StudioKreasi';
-import Navbar from '@/components/Navbar';
+import Navbar from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export default function StudioKreasiPage() {

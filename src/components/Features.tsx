@@ -34,12 +34,12 @@ const featuresData = [
 
 const Features = () => {
     return (
-        <section className="py-20 md:py-32 bg-white dark:bg-gray-900">
+        <section className="py-10 md:py-16 bg-white dark:bg-gray-900">
             {/* Menggunakan container yang konsisten dengan Header */}
             <div className='container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8' id="features-section">
                 
                 {/* Judul Section */}
-                <div className='text-center mb-14'>
+                <div className='text-center mb-20'>
                     <p className='text-[#D7AA83] text-lg font-normal mb-3 tracking-widest uppercase'>Fitur Unggulan</p>
                     <h2 className='text-3xl lg:text-5xl font-semibold text-black dark:text-white lg:max-w-3xl mx-auto'>
                         Berbagai Macam Fitur Menarik untuk Anda Jelajahi

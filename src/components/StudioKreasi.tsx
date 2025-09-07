@@ -131,7 +131,7 @@ const StudioKreasi = () => {
 
       <div className="relative z-10 container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 text-center pt-25    ">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl lg:text-5xl font-serif text-white">
+          <h1 className="text-4xl lg:text-5xl font-sans font-bold text-white">
             Studio <span className="text-[#D7AA83]">Kreasi</span>
           </h1>
           <p className="mt-4 text-gray-300 leading-relaxed">
@@ -150,7 +150,7 @@ const StudioKreasi = () => {
           {generatedImageUrl && <Image src={generatedImageUrl} alt={`Gambar buatan AI dari prompt: ${prompt}`} fill style={{ objectFit: "cover" }} />}
           {previewUrl && !generatedImageUrl && <Image src={previewUrl} alt="Pratinjau gambar yang diunggah" fill style={{ objectFit: "cover" }} />}
           {!previewUrl && !generatedImageUrl && (
-            <div className="text-center p-6">
+            <div className="flex flex-col items-center p-6">
               <CloudIcon />
               <p className="mt-4 text-gray-400 font-semibold">
                 Seret dan lepas gambar referensi di sini atau klik untuk memilih
@@ -204,7 +204,7 @@ const StudioKreasi = () => {
               value={prompt}
               onChange={(e) => { setPrompt(e.target.value); adjustTextareaHeight(); }}
               onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSubmit(e as any); } }}
-              placeholder="Contoh: ubah dengan gaya burung merak emas"
+              placeholder="Contoh: Gabungkan pola ini dengan gaya awan dari batik megamendung"
               className="w-full min-h-[4rem] max-h-48 py-4 pl-6 pr-40 text-gray-800 bg-white border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#D7AA83] focus:border-transparent transition-all duration-200 resize-none"
               disabled={isLoading}
               rows={1}

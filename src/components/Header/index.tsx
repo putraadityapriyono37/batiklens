@@ -55,7 +55,7 @@ const Header: React.FC = () => {
     <header
       className={`fixed top-0 z-40 w-full transition-all duration-300 ${
         sticky
-          ? "shadow-lg bg-[#D7AA83] text-black pt-5"
+          ? "shadow-lg bg-[#D7AA83] text-black pt-5 pb-5"
           : "shadow-none md:pt-14 pt-5"
       }`}
     >
@@ -87,7 +87,7 @@ const Header: React.FC = () => {
             ) : (
               <Link
                 href="/login"
-                className="hidden lg:block bg-transparent text-primary border hover:bg-primary border-primary hover:text-darkmode px-4 py-2 rounded-lg transition-colors"
+                className="hidden lg:block bg-transparent text-primary border hover:bg-gray-900 border-primary hover:text-darkmode px-4 py-2 rounded-lg transition-colors"
               >
                 Sign In
               </Link>

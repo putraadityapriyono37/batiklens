@@ -41,8 +41,8 @@ const HeaderLink: React.FC<{ item: MenuItem }> = ({ item }) => {
               href={subItem.href}
               className={`block px-4 py-2 ${
                 path === subItem.href
-                  ? "bg-primary text-white black"
-                  : "text-gray 900 black dark:text-white hover:bg-primary"
+                  ? "bg-primary text-black"
+                  : "text-white black dark:text-white hover:bg-primary"
               }`}
             >
               {subItem.label}
