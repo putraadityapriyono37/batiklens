@@ -52,7 +52,7 @@ const BatikFitPage = () => {
             <div className="relative z-10 container mx-auto max-w-screen-xl pt-15 px-4 sm:px-6 lg:px-8 text-center">
                 {/* Judul dan Deskripsi */}
                 <div className="max-w-3xl mx-auto">
-                    <h1 className="text-4xl lg:text-5xl font-serif text-white">
+                    <h1 className="text-4xl lg:text-5xl font-sans text-white">
                         Fit In <span className="text-[#D7AA83]">Batik</span> ke Fashion
                     </h1>
                     <p className="mt-4 text-gray-300 leading-relaxed">

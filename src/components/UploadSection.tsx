@@ -136,7 +136,7 @@ const UploadSection = () => {
 
             <div className="relative z-10 container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
                 <div className="text-center max-w-3xl mx-auto mb-12">
-                    <h1 className="text-4xl lg:text-5xl font-serif text-white">
+                    <h1 className="text-4xl lg:text-5xl font-sans font-bold text-white">
                         Kenali <span className="text-[#D7AA83]">Motif Batik</span>
                     </h1>
                     <p className="mt-4 text-gray-300 leading-relaxed">
@@ -156,7 +156,7 @@ const UploadSection = () => {
                         {previewUrl ? (
                             <Image src={previewUrl} alt="Preview Batik" layout="fill" objectFit="cover" />
                         ) : (
-                            <div className="text-center text-gray-500 dark:text-gray-400">
+                            <div className="flex flex-col items-center text-gray-500 dark:text-gray-400">
                                 <UploadIcon />
                                 <p className="mt-2 font-semibold">Tarik & Lepas Gambar</p>
                                 <p className="text-sm">atau klik untuk memilih file</p>
@@ -166,7 +166,7 @@ const UploadSection = () => {
 
                     {/* Kolom Kanan: Informasi & Tombol Aksi */}
                     <div className="flex flex-col p-4 h-full">
-                        <h2 className="text-3xl font-serif text-black dark:text-white">
+                        <h2 className="text-3xl font-sans text-black dark:text-white">
                            {analysisResult ? `Batik ${analysisResult.name}` : "Hasil Analisis"}
                         </h2>
                         <div className="mt-4 space-y-2 text-gray-600 dark:text-gray-300 text-base flex-grow">

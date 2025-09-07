@@ -25,7 +25,7 @@ const BatikPedia: React.FC<BatikPediaProps> = ({ motifs }) => {
       <div className="relative z-10 container mx-auto px-6 py-20">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <h1 className="text-4xl lg:text-5xl font-serif text-white">
+          <h1 className="text-4xl lg:text-5xl font-sans font-bold text-white">
             BatikPedia
           </h1>
           <p className="mt-4 text-gray-300 leading-relaxed">
@@ -52,7 +52,7 @@ const BatikPedia: React.FC<BatikPediaProps> = ({ motifs }) => {
 
                 {/* Text */}
                 <div className="p-4">
-                  <h3 className="font-semibold font-serif text-gray-900 group-hover:text-[#D7AA83] transition-colors">
+                  <h3 className="font-semibold font-sans text-gray-900 group-hover:text-[#D7AA83] transition-colors">
                     {motif.name}
                   </h3>
                   <p className="text-sm text-gray-600">{motif.origin}</p>

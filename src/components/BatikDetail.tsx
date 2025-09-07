@@ -36,13 +36,13 @@ const BatikDetail: React.FC<BatikDetailProps> = ({ motif }) => {
 
                         {/* Kolom Kanan: Detail Teks */}
                         <div className="flex flex-col">
-                            <h1 className="text-4xl lg:text-5xl font-serif text-white">
+                            <h1 className="text-4xl lg:text-5xl font-sans text-white">
                                 Batik <span className="text-[#D7AA83]">{motif.name}</span>
                             </h1>
                             <p className="mt-2 text-lg text-gray-300 font-semibold">{motif.origin}</p>
                             
                             <div className="mt-6 border-t border-gray-700 pt-6">
-                                <h2 className="text-xl font-serif text-white mb-2">Filosofi</h2>
+                                <h2 className="text-xl font-sans text-white mb-2">Filosofi</h2>
                                 <p className="text-gray-400 leading-relaxed whitespace-pre-wrap max-h-80 overflow-y-auto pr-2">
                                     {motif.philosophy}
                                 </p>

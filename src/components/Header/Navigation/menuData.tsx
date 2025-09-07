@@ -30,10 +30,6 @@ export const headerData: MenuItem[] = [
     ],
   },
   {
-    label: "Eksplore",
-    href: "/#eksplore",
-  },
-  {
     label: "Galeri",
     href: "/#galeri",
   },

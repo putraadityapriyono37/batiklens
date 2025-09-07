@@ -24,7 +24,7 @@ const Gallery = () => {
           
           {/* 2. Sesuaikan teks di kolom kiri */}
           <div className="md:w-1/3 text-center md:text-left text-white md:pr-8">
-            <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+            <h2 className="text-4xl md:text-5xl font-sans font-bold leading-tight">
               Ragam <span className="text-[#D7AA83]">batik</span> Nusantara
             </h2>
             <p className="mt-4 text-lg text-gray-300">

@@ -69,7 +69,7 @@ export default function ContactForm() {
       {/* Kontainer Utama yang sudah disamakan jaraknya */}
       <div className="relative container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-serif text-white leading-tight">
+          <h2 className="text-4xl md:text-5xl font-sans font-bold text-white leading-tight">
             Hubungi <span className="text-[#D7AA83]">Kami</span>
           </h2>
           <p className="mt-4 text-gray-300 max-w-xl mx-auto">
