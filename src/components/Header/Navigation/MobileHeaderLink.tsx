@@ -41,7 +41,7 @@ const MobileHeaderLink: React.FC<MobileHeaderLinkProps> = ({
           {item.submenu.map((subItem, index) => (
             <Link
               key={index}
-              href={subItem.href}
+              href={subItem.href || "#"}
               className="block py-2 text-gray-500 hover:bg-gray-200"
             >
               {subItem.label}
