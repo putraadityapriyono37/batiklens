@@ -34,15 +34,15 @@ const HeaderLink: React.FC<{ item: MenuItem }> = ({ item }) => {
         )}
       </Link>
       {submenuOpen && (
-        <div className={`absolute py-2 left-0 mt-0.5 w-60 bg-white dark:bg-darklight dark:text-white shadow-lg rounded-lg`}>
+        <div className={`absolute py-2 left-0 mt-0.5 w-60 bg-[#D7AA80] white dark:bg-darklight dark:text-white shadow-lg rounded-lg`}>
           {item.submenu?.map((subItem, index) => (
             <Link
               key={index}
               href={subItem.href}
               className={`block px-4 py-2 ${
                 path === subItem.href
-                  ? "bg-primary text-white"
-                  : "text-black dark:text-white hover:bg-primary"
+                  ? "bg-primary text-white black"
+                  : "text-gray 900 black dark:text-white hover:bg-primary"
               }`}
             >
               {subItem.label}
