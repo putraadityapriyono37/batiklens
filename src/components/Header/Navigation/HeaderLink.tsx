@@ -38,7 +38,7 @@ const HeaderLink: React.FC<{ item: MenuItem }> = ({ item }) => {
           {item.submenu?.map((subItem, index) => (
             <Link
               key={index}
-              href={subItem.href}
+              href={subItem.href || "#"}
               className={`block px-4 py-2 ${
                 path === subItem.href
                   ? "bg-primary text-black"
