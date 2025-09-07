@@ -6,7 +6,8 @@ export type SubMenuItem = {
 };
 
 export type MenuItem = {
-  label:string;
-  href?: string; // href dibuat opsional agar 'Fitur' tidak error
-  submenu?: SubMenuItem[];
+  id: number;
+  label: string;
+  href?: string;
+  submenu?: MenuItem[];
 };
