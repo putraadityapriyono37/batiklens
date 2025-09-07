@@ -4,12 +4,12 @@ import { MenuItem } from "@/types/menu";
 export const headerData: MenuItem[] = [
   {
     id: 1,
-    label: "Home",
-    href: "/",
+    label: "Home", // Menggunakan 'label' bukan 'title'
+    href: "/",      // Menggunakan 'href' bukan 'path'
   },
   {
     id: 2,
-    label: "Fitur",
+    label: "Fitur", // Menggunakan 'label'
     submenu: [
       { id: 21, label: "Kenal Batik", href: "/KenalBatik" },
       { id: 22, label: "Batik Fit", href: "/BatikFit" },
@@ -19,7 +19,7 @@ export const headerData: MenuItem[] = [
   },
   {
     id: 3,
-    label: "Galeri",
-    href: "/#galeri",
+    label: "Galeri", // Menggunakan 'label'
+    href: "/#galeri", // Menggunakan 'href'
   },
 ];
