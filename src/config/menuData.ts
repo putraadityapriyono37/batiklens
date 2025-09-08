@@ -1,4 +1,3 @@
-// src/config/menuData.ts
 import { MenuItem } from "@/types/menu";
 
 export const headerData: MenuItem[] = [
